@@ -29,6 +29,11 @@
       "title": "Product 6",
       "price": "600",
       "id": 6
+    },
+    {
+      "title": "Update Product 7",
+      "price": "800",
+      "id": 7
     }
   ]
 }

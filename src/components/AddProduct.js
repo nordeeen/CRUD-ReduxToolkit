@@ -12,6 +12,14 @@ const AddProduct = () => {
 
   const handlePost = async (e) => {
     e.preventDefault();
+
+    // validasi input
+    if (title.trim() === "" || price.trim() === "") {
+      return false;
+    } else if (price <= 0) {
+      return false;
+    }
+
     await dispatch(postProduct({ title, price }));
     navigate("/");
   };
@@ -38,7 +46,7 @@ const AddProduct = () => {
           <label className="label">Price</label>
           <div className="control">
             <input
-              type="text"
+              type="number"
               className="input"
               placeholder="Price"
               value={price}

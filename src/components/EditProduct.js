@@ -31,6 +31,14 @@ const EditProduct = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+
+    // validasi input
+    if (title.trim() === "" || price.trim() === "") {
+      return false;
+    } else if (price <= 0) {
+      return false;
+    }
+
     await dispatch(updateProduct({ id, title, price }));
     navigate("/");
   };
@@ -66,7 +74,7 @@ const EditProduct = () => {
           </div>
         </div>
         <div className="field">
-          <button className="button is-success">Submit</button>
+          <button className="button is-success">Update</button>
         </div>
       </form>
     </div>

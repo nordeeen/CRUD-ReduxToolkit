@@ -46,7 +46,7 @@ const ShowProduct = () => {
                   onClick={() => dispatch(deleteProduct(product.id))}
                   className="button is-danger is-small"
                 >
-                  Delete
+                  Del
                 </button>
               </td>
             </tr>

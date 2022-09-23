@@ -5,9 +5,11 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "axios";
 
+let api = axios.create({ baseURL: "http://localhost:5000" });
+
 // call get api
 export const getProduct = createAsyncThunk("products/getProduct", async () => {
-  const response = await axios.get("http://localhost:5000/products");
+  const response = await api.get("/products");
   return response.data;
 });
 
@@ -15,7 +17,7 @@ export const getProduct = createAsyncThunk("products/getProduct", async () => {
 export const postProduct = createAsyncThunk(
   "products/postProduct",
   async ({ title, price }) => {
-    const response = await axios.post("http://localhost:5000/products", {
+    const response = await api.post("/products", {
       title,
       price,
     });
@@ -27,7 +29,7 @@ export const postProduct = createAsyncThunk(
 export const updateProduct = createAsyncThunk(
   "products/editProduct",
   async ({ id, title, price }) => {
-    const response = await axios.patch(`http://localhost:5000/products/${id}`, {
+    const response = await api.patch(`products/${id}`, {
       title,
       price,
     });
@@ -39,7 +41,7 @@ export const updateProduct = createAsyncThunk(
 export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
   async (id) => {
-    await axios.delete(`http://localhost:5000/products/${id}`);
+    await api.delete(`/products/${id}`);
     return id;
   }
 );
